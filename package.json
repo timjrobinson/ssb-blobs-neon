@@ -1,0 +1,26 @@
+{
+  "name": "ssb-blobs-neon",
+  "version": "0.0.1",
+  "description": "Rust-in-Node.js variant of ssb-blobs",
+  "main": "lib/index.js",
+  "author": "Tim Robinson <tim@timjrobinson.com>",
+  "license": "MIT",
+  "dependencies": {
+    "neon-cli": "^0.5.3",
+    "neon-load-or-build": "^2.2.2"
+  },
+  "devDependencies": {
+    "cpy-cli": "^3.1.1",
+    "ssb-blobs": "^2.0.1",
+    "tape": "^5.0.1"
+  },
+  "scripts": {
+    "install": "neon-load-or-build",
+    "build-debug": "neon build",
+    "build-release": "neon build --release",
+    "setup-compat-tests": "cpy ./node_modules/ssb-blobs/test/* ./test-compat",
+    "test-compat": "npm run setup-compat-tests && tape test-compat/*.js",
+    "test-extra": "tape test-extra/*.js",
+    "test": "npm run test-compat && npm run test-extra"
+  }
+}
